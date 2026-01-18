@@ -4,7 +4,10 @@
 
 :root {
   --foreground-rgb: 51, 51, 51;
-  --background: #fafafa;
+  --sky-top: #87CEEB;
+  --sky-bottom: #E0F4FF;
+  --grass-light: #7CB342;
+  --grass-dark: #558B2F;
 }
 
 * {
@@ -23,10 +26,36 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: var(--background);
+  background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom) 60%, var(--grass-light) 60%, var(--grass-dark) 100%);
+  min-height: 100vh;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* 雲のアニメーション */
+@keyframes float-cloud {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
+}
+
+.cloud {
+  animation: float-cloud 6s ease-in-out infinite;
+}
+
+.cloud-slow {
+  animation: float-cloud 8s ease-in-out infinite;
+}
+
+/* 建物の揺れアニメーション */
+@keyframes gentle-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(1deg); }
+}
+
+.building-sway {
+  animation: gentle-sway 4s ease-in-out infinite;
+  transform-origin: bottom center;
 }

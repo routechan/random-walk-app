@@ -8,14 +8,15 @@ export default function RandomButton({ onClick, disabled }: RandomButtonProps) {
     <button
       onClick={onClick}
       disabled={disabled}
-      className="w-60 h-60 rounded-full bg-gradient-to-br from-pink-500 to-orange-400
-                 text-white font-bold text-2xl shadow-lg
+      className="w-full max-w-sm h-14 rounded-full
+                 bg-gradient-to-br from-green-400 to-green-600
+                 text-white font-bold text-lg shadow-xl
                  hover:scale-105 active:scale-95
                  transition-all duration-300
                  disabled:opacity-50 disabled:cursor-not-allowed
-                 mx-auto flex items-center justify-center"
+                 border-4 border-green-300"
       style={{
-        boxShadow: "0 8px 24px rgba(255, 107, 157, 0.4)",
+        boxShadow: '0 6px 20px rgba(76, 175, 80, 0.5)',
       }}
     >
       散歩開始！
