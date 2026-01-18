@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Zen_Maru_Gothic, Dela_Gothic_One } from "next/font/google";
+import Script from "next/script";
 import "@/styles/globals.css";
 
 const zenMaruGothic = Zen_Maru_Gothic({
@@ -47,6 +48,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-1738406462514632" />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1738406462514632"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${zenMaruGothic.variable} ${delaGothicOne.variable} ${zenMaruGothic.className}`}
       >
