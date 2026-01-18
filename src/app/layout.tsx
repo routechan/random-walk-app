@@ -32,10 +32,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/images/sanpo_ogp.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
 };
 
 export const viewport: Viewport = {
