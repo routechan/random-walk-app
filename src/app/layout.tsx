@@ -19,7 +19,7 @@ const delaGothicOne = Dela_Gothic_One({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sanpo-roulette.vercel.app"),
-  title: "さんぽルーレット",
+  title: "さんぽルーレット｜散歩が楽しくなるランダムお題アプリ",
   description:
     "マンネリ化したおさんぽに新しい刺激を与えてくれます。ルーレットでランダムに生成される「どこで」、「なにをする」にしたがってさんぽをしてみましょう。",
   keywords: ["散歩", "ルーレット", "ランダム", "おでかけ", "アプリ"],
