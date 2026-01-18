@@ -1,20 +1,54 @@
-import type { Metadata } from 'next'
-import '@/styles/globals.css'
+import type { Metadata, Viewport } from "next";
+import { Zen_Maru_Gothic, Dela_Gothic_One } from "next/font/google";
+import "@/styles/globals.css";
+
+const zenMaruGothic = Zen_Maru_Gothic({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-zen-maru",
+});
+
+const delaGothicOne = Dela_Gothic_One({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dela-gothic",
+});
 
 export const metadata: Metadata = {
-  title: 'ランダム散歩',
-  description: 'お散歩中のあなたに、新しい体験を提供するアプリ',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-}
+  metadataBase: new URL("https://sanpo-roulette.vercel.app"),
+  title: "さんぽルーレット",
+  description:
+    "マンネリ化したおさんぽに新しい刺激を与えてくれます。ルーレットでランダムに生成される「どこで」、「なにをする」にしたがってさんぽをしてみましょう。",
+  openGraph: {
+    title: "さんぽルーレット",
+    description: "どこで何をするか、ルーレットで決めよう",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body
+        className={`${zenMaruGothic.variable} ${delaGothicOne.variable} ${zenMaruGothic.className}`}
+      >
+        {children}
+      </body>
     </html>
-  )
+  );
 }

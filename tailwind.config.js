@@ -14,6 +14,10 @@ module.exports = {
           purple: '#667EEA',
         },
       },
+      fontFamily: {
+        'dela': ['var(--font-dela-gothic)'],
+        'maru': ['var(--font-zen-maru)'],
+      },
     },
   },
   plugins: [],
