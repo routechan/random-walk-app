@@ -21,13 +21,20 @@ export const metadata: Metadata = {
   title: "さんぽルーレット",
   description:
     "マンネリ化したおさんぽに新しい刺激を与えてくれます。ルーレットでランダムに生成される「どこで」、「なにをする」にしたがってさんぽをしてみましょう。",
+  keywords: ["散歩", "ルーレット", "ランダム", "おでかけ", "アプリ"],
   openGraph: {
     title: "さんぽルーレット",
     description: "どこで何をするか、ルーレットで決めよう",
     type: "website",
+    images: ["/images/sanpo_ogp.png"],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/images/sanpo_ogp.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
