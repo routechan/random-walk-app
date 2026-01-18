@@ -4,10 +4,6 @@
 
 :root {
   --foreground-rgb: 51, 51, 51;
-  --sky-top: #87CEEB;
-  --sky-bottom: #E0F4FF;
-  --grass-light: #7CB342;
-  --grass-dark: #558B2F;
 }
 
 * {
@@ -20,13 +16,13 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans',
-    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom) 60%, var(--grass-light) 60%, var(--grass-dark) 100%);
+  background: linear-gradient(180deg, #7edbff 0%, #b0e2e6 40%, #b3f7d9 100%);
   min-height: 100vh;
 }
 
@@ -35,27 +31,29 @@ a {
   text-decoration: none;
 }
 
-/* 雲のアニメーション */
-@keyframes float-cloud {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(20px); }
+/* シンプルなフェードインアニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.cloud {
-  animation: float-cloud 6s ease-in-out infinite;
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-.cloud-slow {
-  animation: float-cloud 8s ease-in-out infinite;
+/* スピナーアニメーション */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* 建物の揺れアニメーション */
-@keyframes gentle-sway {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(1deg); }
-}
-
-.building-sway {
-  animation: gentle-sway 4s ease-in-out infinite;
-  transform-origin: bottom center;
+.animate-spin-slow {
+  animation: spin 1.5s linear infinite;
 }

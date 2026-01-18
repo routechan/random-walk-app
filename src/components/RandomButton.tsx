@@ -1,6 +1,6 @@
 interface RandomButtonProps {
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export default function RandomButton({ onClick, disabled }: RandomButtonProps) {
@@ -16,10 +16,10 @@ export default function RandomButton({ onClick, disabled }: RandomButtonProps) {
                  disabled:opacity-50 disabled:cursor-not-allowed
                  border-4 border-green-300"
       style={{
-        boxShadow: '0 6px 20px rgba(76, 175, 80, 0.5)',
+        boxShadow: "0 6px 20px rgba(76, 175, 80, 0.5)",
       }}
     >
-      散歩開始！
+      散歩スタート
     </button>
   );
 }

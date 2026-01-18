@@ -6,6 +6,7 @@ import RouletteAnimation from "@/components/RouletteAnimation";
 import ResultDisplay from "@/components/ResultDisplay";
 import type { AppState, Result } from "@/types";
 import { getRandomWalk } from "@/lib/actions";
+import { playDrumRoll, playRevealSound } from "@/lib/sounds";
 
 // 雲コンポーネント
 function Cloud({ className = "" }: { className?: string }) {
@@ -20,27 +21,15 @@ function Cloud({ className = "" }: { className?: string }) {
   );
 }
 
-// 太陽コンポーネント
-function Sun() {
-  return (
-    <div className="absolute -top-16 right-4 md:-top-20 md:right-8">
-      <div
-        className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-yellow-300"
-        style={{
-          boxShadow:
-            "0 0 40px rgba(255, 235, 59, 0.8), 0 0 80px rgba(255, 235, 59, 0.4)",
-        }}
-      />
-    </div>
-  );
-}
-
 export default function RandomWalkClient() {
   const [state, setState] = useState<AppState>("idle");
   const [result, setResult] = useState<Result | null>(null);
 
   const handleGenerate = async () => {
     setState("animating");
+
+    // ドラムロール開始
+    const drumRoll = playDrumRoll(2000);
 
     try {
       const response = await getRandomWalk();
@@ -50,6 +39,8 @@ export default function RandomWalkClient() {
       }
 
       setTimeout(() => {
+        drumRoll.stop();
+        playRevealSound(); // 決定音
         setResult({
           location: response.data.location.text,
           action: response.data.action.text,
@@ -57,6 +48,7 @@ export default function RandomWalkClient() {
         setState("result");
       }, 2000);
     } catch (error) {
+      drumRoll.stop();
       console.error("Error:", error);
       setState("idle");
       alert("エラーが発生しました。もう一度お試しください。");
@@ -68,9 +60,6 @@ export default function RandomWalkClient() {
       {/* 雲 */}
       <Cloud className="cloud top-0 left-4 md:left-10 opacity-90" />
       <Cloud className="cloud-slow top-8 right-0 md:right-16 opacity-80 scale-75" />
-
-      {/* 太陽 */}
-      <Sun />
 
       {(state === "idle" || state === "animating") && (
         <div className="space-y-6 pt-16">
@@ -111,11 +100,15 @@ export default function RandomWalkClient() {
       )}
 
       {state === "result" && result && (
-        <ResultDisplay
-          location={result.location}
-          action={result.action}
-          onRegenerate={handleGenerate}
-        />
+        <div>
+          <ResultDisplay
+            location={result.location}
+            action={result.action}
+          />
+          <div className="pt-4 flex justify-center">
+            <RandomButton onClick={handleGenerate} />
+          </div>
+        </div>
       )}
     </div>
   );
