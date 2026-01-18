@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sanpo-roulette.vercel.app/sitemap.xml
