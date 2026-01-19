@@ -56,6 +56,30 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: "さんぽルーレット",
+              description:
+                "マンネリ化したおさんぽに新しい刺激を与えてくれます。ルーレットでランダムに生成される「どこで」、「なにをする」にしたがってさんぽをしてみましょう。",
+              url: "https://random-walk-app.vercel.app",
+              applicationCategory: "LifestyleApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "JPY",
+              },
+              author: {
+                "@type": "Person",
+                name: "さんぽルーレット",
+              },
+            }),
+          }}
+        />
       </head>
       <body
         className={`${zenMaruGothic.variable} ${delaGothicOne.variable} ${zenMaruGothic.className}`}
