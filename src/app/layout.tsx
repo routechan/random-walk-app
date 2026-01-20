@@ -18,7 +18,7 @@ const delaGothicOne = Dela_Gothic_One({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sanpo-roulette.vercel.app"),
+  metadataBase: new URL("https://random-walk-app.vercel.app"),
   title: "さんぽルーレット｜散歩が楽しくなるランダムお題アプリ",
   description:
     "マンネリ化したおさんぽに新しい刺激を与えてくれます。ルーレットでランダムに生成される「どこで」、「なにをする」にしたがってさんぽをしてみましょう。",
@@ -50,6 +50,18 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1738406462514632" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-L5RYHT729Y"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L5RYHT729Y');
+          `}
+        </Script>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1738406462514632"
