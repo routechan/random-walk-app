@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Zen_Maru_Gothic, Dela_Gothic_One } from "next/font/google";
 import Script from "next/script";
+import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import "@/styles/globals.css";
 
 const zenMaruGothic = Zen_Maru_Gothic({
@@ -23,6 +24,12 @@ export const metadata: Metadata = {
   description:
     "マンネリ化したおさんぽに新しい刺激を与えてくれます。ルーレットでランダムに生成される「どこで」、「なにをする」にしたがってさんぽをしてみましょう。",
   keywords: ["散歩", "ルーレット", "ランダム", "おでかけ", "アプリ"],
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "さんぽルーレット",
+  },
   openGraph: {
     title: "さんぽルーレット",
     description: "どこで何をするか、ルーレットで決めよう",
@@ -39,6 +46,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+  themeColor: "#FF6B9D",
 };
 
 export default function RootLayout({
@@ -50,6 +58,7 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1738406462514632" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-L5RYHT729Y"
           strategy="afterInteractive"
@@ -97,6 +106,7 @@ export default function RootLayout({
         className={`${zenMaruGothic.variable} ${delaGothicOne.variable} ${zenMaruGothic.className}`}
       >
         {children}
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
